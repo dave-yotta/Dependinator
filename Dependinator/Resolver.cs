@@ -5,50 +5,6 @@ using System.Threading.Tasks;
 
 namespace Dependinator
 {
-    public enum ResetReason
-    {
-        HasBecomeInconsistent,
-        ConnectedFailure
-    }
-
-    public enum DependState
-    {
-        Resolving,
-        Resolved,
-        Failed,
-        Completed,
-        Terminated
-    }
-
-    public interface IAdvancmentStrategy<T>
-    {
-        ISet<IDependencyState<T>> States { get; }
-        Task Advance(IEnumerable<IDependencyState<T>> states);
-    }
-
-    public interface IDependencyState<T>
-    {
-        ISet<T> Targets { get; }
-        ISet<T> NextDependencies { get; }
-        bool UnboundDependency { get; }
-        DependState State { get; }
-        bool Reset(ResetReason reason);
-    }
-
-    // Test cases:
-    //  - Depending on self
-    //  - Begin or become co-dependant
-    //  - Begin or become AB BA dependency
-    //  - Take dependency on nothing, that would advance to Done quicker that one that eventually declares it as a target
-    //  - Resetting one after resolve, that leads to a different state path, taking targets on Resolved/Done states (that now must be reset!)
-    //  - Take a dependency which another state then declares it as it's target
-    //  - Reset should allow the strategy to mutate it's states list e.g. "no, i'll not reset, i'll just have this as a failure"
-    //  - Take an unbounded dependency after resolving - and have something fail
-    //  - Take any unbounded dependency before resolving - we throw an exception becuase it's not supported (It can only be done synchronously)
-    //  - Taking a dependency on unresolved state by targets appearing only resets the dependants, not the new source that just appeared
-    //  - What the hell happens if two states target the same node T?
-    //  - Check it supports 1000 20ms tasks at low overhead, i guess.
-
     public class Resolver<T> 
     {
         private IAdvancmentStrategy<T> Strategy { get; }
@@ -72,7 +28,7 @@ namespace Dependinator
                 var targets = Strategy.States.SelectMany(s => s.Targets.Select(t => (t, s)))
                                              .ToLookup(x => x.t, x => x.s);
 
-                foreach (var state in Strategy.States)
+                foreach (var state in Strategy.States.Where(x=>x.State!= DependState.Terminated))
                 {
                     // Any state which has managed to take a dependency on a resolving state must be restarted
                     if(state.State == DependState.Resolving)

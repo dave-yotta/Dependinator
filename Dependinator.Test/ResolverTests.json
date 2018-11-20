@@ -1,0 +1,53 @@
+﻿// Test cases to add:
+//  - Depending on self
+//  - Begin or become co-dependant
+//  - Begin or become AB BA dependency
+//  - Take dependency on nothing, that would advance to Done quicker that one that eventually declares it as a target
+//  - Resetting one after resolve, that leads to a different state path, taking targets on Resolved/Done states (that now must be reset!)
+//  - Take a dependency which another state then declares it as it's target
+//  - Reset should allow the strategy to mutate it's states list e.g. "no, i'll not reset, i'll just have this as a failure"
+//  - Take an unbounded dependency after resolving - and have something fail
+//  - Take any unbounded dependency before resolving - we throw an exception becuase it's not supported (It can only be done synchronously)
+//  - Taking a dependency on unresolved state by targets appearing only resets the dependants, not the new source that just appeared
+//  - What the hell happens if two states target the same node T?
+//  - Check it supports 1000 20ms tasks at low overhead, i guess.
+[
+  {
+    "Name": "Simple with no dependenceies",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour":  false,
+        "Evolution": 
+        [
+          [[1],   [],  false, "Resolving"],
+          [[1,4], [5], false, "Resolved" ],
+          [[1,4], [6], false, "Resolved" ],
+          [[1,4], [],  false, "Completed"]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour":  false,
+        "Evolution": 
+        [
+          [[2], [], false, "Resolving"],
+          [[2], [], false, "Resolved" ],
+          [[2], [], false, "Completed"]
+        ]
+      },
+      {
+        "Id": 3,
+        "ResetBehaviour":  false,
+        "Evolution": 
+        [
+          [[3], [], false, "Resolving"],
+          [[3], [], false, "Resolved" ],
+          [[3], [], false, "Completed"]
+        ]
+      }
+    ],
+    "Assert": [[1,2,3], [1,2,3], [1]]
+  }
+]
