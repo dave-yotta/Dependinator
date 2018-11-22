@@ -5,29 +5,33 @@ namespace Dependinator.Test
 {
     public class TestState : IDependencyState<TestNode>
     {
+        public int ResetCounter { get; set; }
+        public int ResetNumber { get; set; }
         public int Index { get; set; }
-        private bool ResetFail { get; set; }
         public TestStateEvolutionModel Model { get; }
         public TestState(TestStateEvolutionModel model)
         {
             Model = model;
         }
 
-        public ISet<TestNode> Targets => new HashSet<TestNode>(Model.Evolution[Index].Targets.Select(TestNode.Create));
-        public ISet<TestNode> NextDependencies => new HashSet<TestNode>(Model.Evolution[Index].NextDependencies.Select(TestNode.Create));
-        public bool UnboundDependency => Model.Evolution[Index].UnboundDependencies;
-        public DependState State => ResetFail ? DependState.Terminated : Model.Evolution[Index].State;
+        public ISet<TestNode> Targets => new HashSet<TestNode>(Model.Evolution[Index].Resets[ResetNumber].Targets.Select(TestNode.Create));
+        public ISet<TestNode> NextDependencies => new HashSet<TestNode>(Model.Evolution[Index].Resets[ResetNumber].NextDependencies.Select(TestNode.Create));
+        public bool UnboundDependency => Model.Evolution[Index].Resets[ResetNumber].UnboundDependencies;
+        public DependState State => Model.Evolution[Index].Resets[ResetNumber].State;
 
         public void Reset(ResetReason reason)
         {
-            if(Model.ResetBehaviour)
+            if(Model.ResetBehaviour[ResetNumber] != null)
             {
-                Index = 0;
+                ResetCounter++;
+                if(ResetCounter > Model.ResetBehaviour[ResetNumber])
+                {
+                    ResetCounter = 0;
+                    ResetNumber++;
+                }
             }
-            else
-            {
-                ResetFail = true;   
-            }
+
+            Index = 0;
         }
     }
 }

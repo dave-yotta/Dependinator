@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace Dependinator.Test
 {
+
     public class TestStateModelConverter : JsonConverter<TestStateModel>
     {
         public override void WriteJson(JsonWriter writer, TestStateModel value, JsonSerializer serializer)
