@@ -82,7 +82,7 @@
     "Assert": [[1], [2], [1,2]]
   },
   {
-    "Name": "Become Dependant NonBlocking",
+    "Name": "Become Dependant",
     "Arrange": 
     [
       {
@@ -108,7 +108,7 @@
         ]
       }
     ],
-    "Assert": [[1,2], [1], [1,2], [2]]
+    "Assert": [[1,2], [1], [2], [1,2]]
   },
   {
     "Name": "Become Dependant NonBlocking",
@@ -136,7 +136,7 @@
         ]
       }
     ],
-    "Assert": [[1,2], [1,2], [2]]
+    "Assert": [[1,2], [2], [1,2]]
   },
   {
     "Name": "Begin Co-Dependant",
