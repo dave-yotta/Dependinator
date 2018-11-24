@@ -7,9 +7,5 @@ namespace Dependinator.Test
         public string Name { get; set; }
         public List<TestStateEvolutionModel> Arrange { get; set; }
         public List<TestStateAdvancementExpectedModel> Assert { get; set; }
-        public override string ToString()
-        {
-            return Name;
-        }
     }
 }

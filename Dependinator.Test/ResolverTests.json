@@ -1,6 +1,6 @@
 ﻿[
   {
-    "Name": "Simple with no dependenceies",
+    "Name": "Baseline",
     "Arrange": 
     [
       {
@@ -8,7 +8,7 @@
         "ResetBehaviour":  [1, null],
         "Evolution": 
         [
-          [[[1],   [],  false, "Resolving"], [[],   [],  false, "Terminated"]],
+          [[[1],   [],  false, "Resolving"], [[],   [],  false, "Failed"]],
           [[[1,4], [5], false, "Resolved" ]],
           [[[1,4], [6], false, "Resolved" ]],
           [[[1,4], [],  false, "Completed"]]
@@ -16,7 +16,7 @@
       },
       {
         "Id": 2,
-        "ResetBehaviour":  [null],
+        "ResetBehaviour": [0],
         "Evolution": 
         [
           [[[2], [], false, "Resolving"]],
@@ -26,7 +26,7 @@
       },
       {
         "Id": 3,
-        "ResetBehaviour":  [null],
+        "ResetBehaviour": [0],
         "Evolution": 
         [
           [[[3], [], false, "Resolving"]],
@@ -43,7 +43,7 @@
     [
       {
         "Id": 1,
-        "ResetBehaviour":  [null],
+        "ResetBehaviour": [0],
         "Evolution": 
         [
           [[[1], [],  false, "Resolving"]],
@@ -55,22 +55,22 @@
     "Assert": [[1], [1]]
   },
   {
-    "Name": "Begin Co-Dependant",
+    "Name": "Begin Dependant",
     "Arrange": 
     [
       {
         "Id": 1,
-        "ResetBehaviour":  [null],
+        "ResetBehaviour": [0],
         "Evolution": 
         [
-          [[[1], [2], false, "Resolving"]],
+          [[[1], [],  false, "Resolving"]],
           [[[1], [],  false, "Resolved" ]],
           [[[1], [],  false, "Completed"]]
         ]
       },
       {
         "Id": 2,
-        "ResetBehaviour":  [null],
+        "ResetBehaviour": [0],
         "Evolution": 
         [
           [[[2], [1], false, "Resolving"]],
@@ -82,22 +82,79 @@
     "Assert": [[1], [2], [1,2]]
   },
   {
-    "Name": "Become Co-Dependant 1-way",
+    "Name": "Become Dependant NonBlocking",
     "Arrange": 
     [
       {
         "Id": 1,
-        "ResetBehaviour":  [null],
+        "ResetBehaviour": [0],
         "Evolution": 
         [
           [[[1], [],  false, "Resolving"]],
-          [[[1], [2],  false, "Resolved" ]],
+          [[[1], [],  false, "Resolving"]],
+          [[[1], [],  false, "Resolved" ]],
           [[[1], [],  false, "Completed"]]
         ]
       },
       {
         "Id": 2,
-        "ResetBehaviour":  [null],
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[2], [],  false, "Resolving"]],
+          [[[2], [1], false, "Resolving"]],
+          [[[2], [],  false, "Resolved" ]],
+          [[[2], [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1,2], [1], [1,2], [2]]
+  },
+  {
+    "Name": "Become Dependant NonBlocking",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [],  false, "Resolving"]],
+          [[[1], [],  false, "Resolved" ]],
+          [[[1], [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[2], [],  false, "Resolving"]],
+          [[[2], [1], false, "Resolving"]],
+          [[[2], [],  false, "Resolved" ]],
+          [[[2], [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1,2], [1,2], [2]]
+  },
+  {
+    "Name": "Begin Co-Dependant",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [2], false, "Resolving"]],
+          [[[1], [],  false, "Resolved" ]],
+          [[[1], [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [0],
         "Evolution": 
         [
           [[[2], [1], false, "Resolving"]],
@@ -106,15 +163,44 @@
         ]
       }
     ],
-    "Assert": [[2], [1], [1,2]]
+    "Assert": [[1], [1], [2], [2]]
   },
   {
-    "Name": "Become Co-Dependant 2-way",
+    "Name": "Begin Co-Dependant, 2-step resolve",
     "Arrange": 
     [
       {
         "Id": 1,
-        "ResetBehaviour":  [null],
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [2], false, "Resolving"]],
+          [[[1], [],  false, "Resolving"]],
+          [[[1], [],  false, "Resolved" ]],
+          [[[1], [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[2], [1], false, "Resolving"]],
+          [[[2], [],  false, "Resolving"]],
+          [[[2], [],  false, "Resolved" ]],
+          [[[2], [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1], [1], [1], [2], [2], [2]]
+  },
+  {
+    "Name": "Become Co-Dependant 1-way",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
         "Evolution": 
         [
           [[[1], [],  false, "Resolving"]],
@@ -124,7 +210,34 @@
       },
       {
         "Id": 2,
-        "ResetBehaviour":  [null],
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[2], [1], false, "Resolving"]],
+          [[[2], [],  false, "Resolved" ]],
+          [[[2], [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1], [1], [2], [2]]
+  },
+  {
+    "Name": "Become Co-Dependant 2-way",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [],  false, "Resolving"]],
+          [[[1], [2], false, "Resolved" ]],
+          [[[1], [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [0],
         "Evolution": 
         [
           [[[2], [],  false, "Resolving"]],
@@ -133,7 +246,36 @@
         ]
       }
     ],
-    "Assert": [[1,2], [2], [1,2]]
+    "Assert": [[1,2], [1], [2]]
+  },
+  {
+    "Name": "Become Co-Dependant 2-way 2-stage",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [],  false, "Resolving"]],
+          [[[1], [2], false, "Resolving"]],
+          [[[1], [],  false, "Resolved" ]],
+          [[[1], [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[2], [],  false, "Resolving"]],
+          [[[2], [1], false, "Resolving"]],
+          [[[2], [],  false, "Resolved" ]],
+          [[[2], [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1,2], [1], [1], [2], [2]]
   },
   {
     "Name": "Become Co-Dependant 2-way out of sync",
@@ -141,7 +283,7 @@
     [
       {
         "Id": 1,
-        "ResetBehaviour":  [null],
+        "ResetBehaviour": [0],
         "Evolution": 
         [
           [[[1], [],  false, "Resolving"]],
@@ -151,7 +293,7 @@
       },
       {
         "Id": 2,
-        "ResetBehaviour":  [null],
+        "ResetBehaviour": [0],
         "Evolution": 
         [
           [[[2], [],  false, "Resolving"]],
@@ -173,4 +315,7 @@
   /* Taking a dependency on unresolved state by targets appearing only resets the dependants, not the new source that just appeared */
   /* What the hell happens if two states target the same node T? */
   /* Check it supports 1000 20ms tasks at low overhead, i guess. */
+  /* Check when resetting that it doesnt take the state as "started" i.e. during co-dependency */
+  /* get dependency on unresolved state, forcing the unsolved state to freeze, then reset the source */
+  /* unbound dependencies and related freezing */
 ]

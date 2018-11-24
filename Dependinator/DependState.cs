@@ -5,7 +5,6 @@
         Resolving,
         Resolved,
         Failed,
-        Completed,
-        Terminated
+        Completed
     }
 }

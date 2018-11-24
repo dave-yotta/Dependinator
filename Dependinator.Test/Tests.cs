@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using NUnit.Framework;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,18 +13,21 @@ namespace Dependinator.Test
     [TestFixture]
     public class Tests
     {
-        public static IEnumerable<ResolverTestCase> Cases()
+        public static IEnumerable Cases()
         {
             var root = Path.GetDirectoryName(typeof(Tests).Assembly.Location);
             var tests = JArray.Parse(File.ReadAllText(Path.Combine(root, "ResolverTests.Json")));
             foreach (var token in tests)
             {
-                yield return token.ToObject<ResolverTestCase>();
+                var data = token.ToObject<ResolverTestCase>();
+                var testCase = new TestCaseData(data);
+                testCase.SetName(data.Name);
+                yield return testCase;
             }
         }
 
         [TestCaseSource("Cases")]
-        public async Task JsonTest(ResolverTestCase tc)
+        public async Task Baseline(ResolverTestCase tc)
         {
             var strategy = new TestAdvStrategy(tc.Arrange.Select(c => new TestState(c)).ToArray());
 
@@ -37,14 +42,21 @@ namespace Dependinator.Test
 
             var resolver = new Resolver<TestNode>(strategy);
 
-            await resolver.Resolve();
+            try
+            {
+                await resolver.Resolve();
+            }
+            catch(InvalidOperationException e) when (e.Message == "RESET_OVERRUN")
+            {
+                actuals.Add(new List<int>());
+            }
 
             var expect = tc.Assert.Select(x => x.ToAdvance).ToList();
 
             var expectString = $"[{string.Join(", ", expect.Select(x => $"[{string.Join(", ", x)}]"))}]";
             var actualString = $"[{string.Join(", ", actuals.Select(x => $"[{string.Join(", ", x)}]"))}]";
 
-            Assert.AreEqual(expectString, actualString, $"\r\nExpected: {expectString}\r\n     Actual: {actualString}");
+            Assert.IsTrue(expectString == actualString, $"\r\nExpected: {expectString}\r\n     Actual: {actualString}");
         }
     }
 }

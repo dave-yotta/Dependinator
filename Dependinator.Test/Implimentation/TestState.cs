@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Dependinator.Test
@@ -21,16 +22,19 @@ namespace Dependinator.Test
 
         public void Reset(ResetReason reason)
         {
-            if(Model.ResetBehaviour[ResetNumber] != null)
+            if (Model.ResetBehaviour[ResetNumber] != null)
             {
                 ResetCounter++;
-                if(ResetCounter > Model.ResetBehaviour[ResetNumber])
+                if (ResetCounter > Model.ResetBehaviour[ResetNumber])
                 {
                     ResetCounter = 0;
                     ResetNumber++;
+                    if (ResetNumber >= Model.ResetBehaviour.Count)
+                    {
+                        throw new InvalidOperationException("RESET_OVERRUN");
+                    }
                 }
             }
-
             Index = 0;
         }
     }
