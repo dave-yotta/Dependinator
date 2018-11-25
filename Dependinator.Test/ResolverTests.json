@@ -8,10 +8,10 @@
         "ResetBehaviour":  [1, null],
         "Evolution": 
         [
-          [[[1],   [],  false, "Resolving"], [[],   [],  false, "Failed"]],
-          [[[1,4], [5], false, "Resolved" ]],
-          [[[1,4], [6], false, "Resolved" ]],
-          [[[1,4], [],  false, "Completed"]]
+          [[[1], [],  false, "Resolving"], [[],   [],  false, "Failed"]],
+          [[[4], [5], false, "Resolved" ]],
+          [[[],  [6], false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       },
       {
@@ -20,8 +20,8 @@
         "Evolution": 
         [
           [[[2], [], false, "Resolving"]],
-          [[[2], [], false, "Resolved" ]],
-          [[[2], [], false, "Completed"]]
+          [[[],  [], false, "Resolved" ]],
+          [[[],  [], false, "Completed"]]
         ]
       },
       {
@@ -30,8 +30,8 @@
         "Evolution": 
         [
           [[[3], [], false, "Resolving"]],
-          [[[3], [], false, "Resolved" ]],
-          [[[3], [], false, "Completed"]]
+          [[[],  [], false, "Resolved" ]],
+          [[[],  [], false, "Completed"]]
         ]
       }
     ],
@@ -47,8 +47,8 @@
         "Evolution": 
         [
           [[[1], [],  false, "Resolving"]],
-          [[[1], [1], false, "Resolved" ]],
-          [[[1], [],  false, "Completed"]]
+          [[[],  [1], false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       }
     ],
@@ -64,8 +64,8 @@
         "Evolution": 
         [
           [[[1], [],  false, "Resolving"]],
-          [[[1], [],  false, "Resolved" ]],
-          [[[1], [],  false, "Completed"]]
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       },
       {
@@ -74,8 +74,8 @@
         "Evolution": 
         [
           [[[2], [1], false, "Resolving"]],
-          [[[2], [],  false, "Resolved" ]],
-          [[[2], [],  false, "Completed"]]
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       }
     ],
@@ -91,9 +91,9 @@
         "Evolution": 
         [
           [[[1], [],  false, "Resolving"]],
-          [[[1], [],  false, "Resolving"]],
-          [[[1], [],  false, "Resolved" ]],
-          [[[1], [],  false, "Completed"]]
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       },
       {
@@ -102,9 +102,9 @@
         "Evolution": 
         [
           [[[2], [],  false, "Resolving"]],
-          [[[2], [1], false, "Resolving"]],
-          [[[2], [],  false, "Resolved" ]],
-          [[[2], [],  false, "Completed"]]
+          [[[],  [1], false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       }
     ],
@@ -120,8 +120,8 @@
         "Evolution": 
         [
           [[[1], [],  false, "Resolving"]],
-          [[[1], [],  false, "Resolved" ]],
-          [[[1], [],  false, "Completed"]]
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       },
       {
@@ -130,9 +130,9 @@
         "Evolution": 
         [
           [[[2], [],  false, "Resolving"]],
-          [[[2], [1], false, "Resolving"]],
-          [[[2], [],  false, "Resolved" ]],
-          [[[2], [],  false, "Completed"]]
+          [[[],  [1], false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       }
     ],
@@ -148,8 +148,8 @@
         "Evolution": 
         [
           [[[1], [2], false, "Resolving"]],
-          [[[1], [],  false, "Resolved" ]],
-          [[[1], [],  false, "Completed"]]
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       },
       {
@@ -158,8 +158,8 @@
         "Evolution": 
         [
           [[[2], [1], false, "Resolving"]],
-          [[[2], [],  false, "Resolved" ]],
-          [[[2], [],  false, "Completed"]]
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       }
     ],
@@ -175,9 +175,9 @@
         "Evolution": 
         [
           [[[1], [2], false, "Resolving"]],
-          [[[1], [],  false, "Resolving"]],
-          [[[1], [],  false, "Resolved" ]],
-          [[[1], [],  false, "Completed"]]
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       },
       {
@@ -186,9 +186,9 @@
         "Evolution": 
         [
           [[[2], [1], false, "Resolving"]],
-          [[[2], [],  false, "Resolving"]],
-          [[[2], [],  false, "Resolved" ]],
-          [[[2], [],  false, "Completed"]]
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       }
     ],
@@ -204,8 +204,8 @@
         "Evolution": 
         [
           [[[1], [],  false, "Resolving"]],
-          [[[1], [2], false, "Resolved" ]],
-          [[[1], [],  false, "Completed"]]
+          [[[],  [2], false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       },
       {
@@ -214,8 +214,8 @@
         "Evolution": 
         [
           [[[2], [1], false, "Resolving"]],
-          [[[2], [],  false, "Resolved" ]],
-          [[[2], [],  false, "Completed"]]
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       }
     ],
@@ -231,8 +231,8 @@
         "Evolution": 
         [
           [[[1], [],  false, "Resolving"]],
-          [[[1], [2], false, "Resolved" ]],
-          [[[1], [],  false, "Completed"]]
+          [[[],  [2], false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       },
       {
@@ -241,8 +241,8 @@
         "Evolution": 
         [
           [[[2], [],  false, "Resolving"]],
-          [[[2], [1], false, "Resolved" ]],
-          [[[2], [],  false, "Completed"]]
+          [[[],  [1], false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       }
     ],
@@ -258,9 +258,9 @@
         "Evolution": 
         [
           [[[1], [],  false, "Resolving"]],
-          [[[1], [2], false, "Resolving"]],
-          [[[1], [],  false, "Resolved" ]],
-          [[[1], [],  false, "Completed"]]
+          [[[],  [2], false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       },
       {
@@ -269,13 +269,95 @@
         "Evolution": 
         [
           [[[2], [],  false, "Resolving"]],
-          [[[2], [1], false, "Resolving"]],
-          [[[2], [],  false, "Resolved" ]],
-          [[[2], [],  false, "Completed"]]
+          [[[],  [1], false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       }
     ],
     "Assert": [[1,2], [1], [1], [2], [2]]
+  },
+  {
+    "Name": "Become Co-Dependant 3-way 2-stage",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [],  false, "Resolving"]],
+          [[[],  [2], false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[2], [],  false, "Resolving"]],
+          [[[],  [3], false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 3,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[3], [],  false, "Resolving"]],
+          [[[],  [1], false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1,2,3], [1,3], [1,3], [2], [2]]
+  },
+  {
+    "Name": "Become Co-Dependant 3-way 3-stage",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [],  false, "Resolving"]],
+          [[[],  [2], false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[2], [],  false, "Resolving"]],
+          [[[],  [3], false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 3,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[3], [],  false, "Resolving"]],
+          [[[],  [1], false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1,2,3], [1,3], [3], [3], [1], [1], [2], [2]]
   },
   {
     "Name": "Become Co-Dependant 2-way out of sync",
@@ -287,8 +369,8 @@
         "Evolution": 
         [
           [[[1], [],  false, "Resolving"]],
-          [[[1], [2], false, "Resolved" ]],
-          [[[1], [],  false, "Completed"]]
+          [[[],  [2], false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       },
       {
@@ -297,16 +379,118 @@
         "Evolution": 
         [
           [[[2], [],  false, "Resolving"]],
-          [[[2], [],  false, "Resolving" ]],
-          [[[2], [1], false, "Resolved" ]],
-          [[[2], [],  false, "Completed"]]
+          [[[],  [],  false, "Resolving" ]],
+          [[[],  [1], false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
         ]
       }
     ],
     "Assert": [[1,2], [2], [1,2]]
+  },
+  {
+    "Name": "Dependency appears due to target appearing",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[4], [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[2], [4], false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1,2], [1,2], [1], [1,2]]
+  },
+  {
+    "Name": "Dual edit",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [1], false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [1], false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1], [1], [1], [2], [2], [2]]
+  },
+  {
+    "Name": "Wrong picture of a target",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[],  [],  false, "Resolving"]],
+          [[[1], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[1], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 3,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[2], [1], false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1,2,3], [2,3], [2,3], [3], [3], [3], [1,2], [1,2]]
   }
-  /* Begin or become AB BA dependency */
-  /* Take dependency on nothing, that would advance to Done quicker that one that eventually declares it as a target */
   /* Resetting one after resolve, that leads to a different state path, taking targets on Resolved/Done states (that now must be reset!) */
   /* Take a dependency which another state then declares it as it's target */
   /* Reset should allow the strategy to mutate it's states list e.g. "no, i'll not reset, i'll just have this as a failure" */

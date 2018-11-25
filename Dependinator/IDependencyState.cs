@@ -4,10 +4,10 @@ namespace Dependinator
 {
     public interface IDependencyState<T>
     {
-        ISet<T> Targets { get; }
+        ISet<T> NextTargets { get; }
         ISet<T> NextDependencies { get; }
-        bool UnboundDependency { get; }
+        bool NextUnboundDependency { get; }
         DependState State { get; }
-        void Reset(ResetReason reason);
+        void Reset();
     }
 }

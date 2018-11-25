@@ -15,12 +15,12 @@ namespace Dependinator.Test
             Model = model;
         }
 
-        public ISet<TestNode> Targets => new HashSet<TestNode>(Model.Evolution[Index].Resets[ResetNumber].Targets.Select(TestNode.Create));
+        public ISet<TestNode> NextTargets => new HashSet<TestNode>(Model.Evolution[Index].Resets[ResetNumber].Targets.Select(TestNode.Create));
         public ISet<TestNode> NextDependencies => new HashSet<TestNode>(Model.Evolution[Index].Resets[ResetNumber].NextDependencies.Select(TestNode.Create));
-        public bool UnboundDependency => Model.Evolution[Index].Resets[ResetNumber].UnboundDependencies;
+        public bool NextUnboundDependency => Model.Evolution[Index].Resets[ResetNumber].UnboundDependencies;
         public DependState State => Model.Evolution[Index].Resets[ResetNumber].State;
 
-        public void Reset(ResetReason reason)
+        public void Reset()
         {
             if (Model.ResetBehaviour[ResetNumber] != null)
             {
