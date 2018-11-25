@@ -9,7 +9,7 @@
         "Evolution": 
         [
           [[[1], [],  false, "Resolving"], [[],   [],  false, "Failed"]],
-          [[[4], [5], false, "Resolved" ]],
+          [[[4], [5], false, "Resolving"]],
           [[[],  [6], false, "Resolved" ]],
           [[[],  [],  false, "Completed"]]
         ]
@@ -35,7 +35,7 @@
         ]
       }
     ],
-    "Assert": [[1,2,3], [1,2,3], [1]]
+    "Assert": [[1,2,3], [1], [1,2,3]]
   },
   {
     "Name": "Self Dependant",
@@ -278,6 +278,38 @@
     "Assert": [[1,2], [1], [1], [2], [2]]
   },
   {
+    "Name": "Become Co-Dependant after resolution",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [2], false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[2], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [1], false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1,2], [1,2], [1,2], [1,2], [2]]
+  },
+  {
     "Name": "Become Co-Dependant 3-way 2-stage",
     "Arrange": 
     [
@@ -398,8 +430,8 @@
         [
           [[[1], [],  false, "Resolving"]],
           [[[],  [],  false, "Resolving"]],
-          [[[],  [],  false, "Resolving"]],
-          [[[4], [],  false, "Resolved" ]],
+          [[[4], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
           [[[],  [],  false, "Completed"]]
         ]
       },
@@ -415,7 +447,7 @@
         ]
       }
     ],
-    "Assert": [[1,2], [1,2], [1], [1,2]]
+    "Assert": [[1,2], [1,2], [2], [1], [1]]
   },
   {
     "Name": "Dual edit",
@@ -490,16 +522,347 @@
       }
     ],
     "Assert": [[1,2,3], [2,3], [2,3], [3], [3], [3], [1,2], [1,2]]
+  },
+  {
+    "Name": "Unbound after resolution",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  true,  "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[2], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 3,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[3], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1,2,3], [1,2,3], [1], [1], [1]]
+  },
+  {
+    "Name": "Unbound after resolution with reset",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Failed"   ]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [1],
+        "Evolution": 
+        [
+          [[[2], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  true,  "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 3,
+        "ResetBehaviour": [1],
+        "Evolution": 
+        [
+          [[[3], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  true,  "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1,2,3], [1,2,3], [1,2,3], [1], [1], [2,3], [2,3], [2,3]]
+  },
+  {
+    "Name": "Failure chain",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Failed"   ]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [1],
+        "Evolution": 
+        [
+          [[[2], [],  false, "Resolving"]],
+          [[[],  [1], false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 3,
+        "ResetBehaviour": [1],
+        "Evolution": 
+        [
+          [[[3], [],  false, "Resolving"]],
+          [[[],  [2], false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1,2,3], [1,2,3], [1], [2,3], [2,3]]
+  },
+  {
+    "Name": "Failure cascade",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Failed"   ]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [1],
+        "Evolution": 
+        [
+          [[[2], [],  false, "Resolving"]],
+          [[[],  [1], false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 3,
+        "ResetBehaviour": [1],
+        "Evolution": 
+        [
+          [[[3], [],  false, "Resolving"]],
+          [[[],  [2], false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 4,
+        "ResetBehaviour": [1],
+        "Evolution": 
+        [
+          [[[4], [],  false, "Resolving"]],
+          [[[],  [3], false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 5,
+        "ResetBehaviour": [1],
+        "Evolution": 
+        [
+          [[[5], [],  false, "Resolving"]],
+          [[[],  [3], false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1,2,3,4,5], [1,2,3,4,5], [1], [2,3,4,5], [2,3,4,5]]
+  },
+  {
+    "Name": "Appearing dependency with failure",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[4], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Failed"]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [1],
+        "Evolution": 
+        [
+          [[[2], [4], false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1,2], [1,2], [2], [1], [1], [2], [2], [2]]
+  },
+  {
+    "Name": "Dual edit with failure",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [1], false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Failed"]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [1], false, "Resolving"]],
+          [[[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1], [1], [1], [2], [2], [2]]
+  },
+  {
+    "Name": "Take different target after reset that was depended upon",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolving" ]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Failed"   ]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [0, 0],
+        "Evolution": 
+        [
+          [[[2], [],  false, "Resolving"], [[],  [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolving"], [[5], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolving"], [[6], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolving"], [[],  [],  false, "Resolving"]],
+          [[[],  [1], false, "Resolved" ], [[],  [1], false, "Resolving"]],
+          [[[],  [],  false, "Completed"], [[],  [],  false, "Resolved" ]],
+          [null,                           [[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 3,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[3], [],  false, "Resolving"]],
+          [[[],  [5], false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 4,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[4], [],  false, "Resolving"]],
+          [[[],  [6], false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1,2,3,4], [1,2], [2], [2], [1,2,3,4], [2], [2], [2], [2], [2], [2]]
+  },
+  {
+    "Name": "Take different target after reset that was depended upon, causing a freeze",
+    "Arrange": 
+    [
+      {
+        "Id": 1,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[1], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Failed"   ]]
+        ]
+      },
+      {
+        "Id": 2,
+        "ResetBehaviour": [0, 0],
+        "Evolution": 
+        [
+          [[[2], [],  false, "Resolving"], [[],    [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolving"], [[5,6], [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolving"], [[],    [],  false, "Resolving"]],
+          [[[],  [],  false, "Resolving"], [[],    [],  false, "Resolving"]],
+          [[[],  [1], false, "Resolved" ], [[],    [1], false, "Resolving"]],
+          [[[],  [],  false, "Completed"], [[],    [],  false, "Resolved" ]],
+          [null,                           [[],    [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 3,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[3], [],  false, "Resolving"]],
+          [[[],  [5], false, "Resolved" ]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      },
+      {
+        "Id": 4,
+        "ResetBehaviour": [0],
+        "Evolution": 
+        [
+          [[[4], [],  false, "Resolving"]],
+          [[[],  [6], false, "Resolved" ]],
+          [[[],  [],  false, "Resolved" ]],
+          [[[],  [],  false, "Completed"]]
+        ]
+      }
+    ],
+    "Assert": [[1,2,3,4], [2], [2], [2], [1,2,3,4], [2], [3,4], [2], [2], [2], [2], [2]]
   }
-  /* Resetting one after resolve, that leads to a different state path, taking targets on Resolved/Done states (that now must be reset!) */
-  /* Take a dependency which another state then declares it as it's target */
-  /* Reset should allow the strategy to mutate it's states list e.g. "no, i'll not reset, i'll just have this as a failure" */
-  /* Take an unbounded dependency after resolving - and have something fail */
-  /* Take any unbounded dependency before resolving - we throw an exception becuase it's not supported (It can only be done synchronously) */
-  /* Taking a dependency on unresolved state by targets appearing only resets the dependants, not the new source that just appeared */
-  /* What the hell happens if two states target the same node T? */
-  /* Check it supports 1000 20ms tasks at low overhead, i guess. */
-  /* Check when resetting that it doesnt take the state as "started" i.e. during co-dependency */
-  /* get dependency on unresolved state, forcing the unsolved state to freeze, then reset the source */
-  /* unbound dependencies and related freezing */
 ]

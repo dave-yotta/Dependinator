@@ -21,7 +21,7 @@ namespace Dependinator
 
             while (Strategy.States.Any(x => !Dependencies.IsCompleted(x)))
             {
-                var resolving = Strategy.States.Any(x => x.State == DependState.Resolving && !Dependencies.IsFrozen(x));
+                var isResolving = Strategy.States.Any(x => x.State == DependState.Resolving && !Dependencies.IsFrozen(x));
 
                 foreach (var state in Strategy.States)
                 {
@@ -30,12 +30,17 @@ namespace Dependinator
 
                     // Frozen states what to take a target that has already been taken as a dependency (and not completed)
                     if(state.State != DependState.Resolved)
-                    {
+                    {                        
                         if(Dependencies.IsFrozen(state)) continue;
                     }
 
+                    if (state.NextTargets.Any() && state.State != DependState.Resolving)
+                    {
+                        throw new InvalidOperationException("Targets may not be taken after resoltuion");
+                    }
+
                     // If we are resolving...
-                    if (resolving)
+                    if (isResolving)
                     {
                         // only advance resolving states
                         if (state.State != DependState.Resolving) continue;
