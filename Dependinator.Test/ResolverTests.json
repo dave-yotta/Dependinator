@@ -219,7 +219,7 @@
         ]
       }
     ],
-    "Assert": [[1], [1], [2], [2]]
+    "Assert": [[1], [2], [1,2]]
   },
   {
     "Name": "Become Co-Dependant 2-way",
@@ -246,7 +246,7 @@
         ]
       }
     ],
-    "Assert": [[1,2], [1], [2]]
+    "Assert": [[1,2], [1,2]]
   },
   {
     "Name": "Become Co-Dependant 2-way 2-stage",

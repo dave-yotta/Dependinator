@@ -49,8 +49,19 @@ namespace Dependinator
                         // only advance resolving states
                         if (state.State != DependState.Resolving) continue;
 
-                        // We cannot advance a state that wants to take a dependency on a resolving state
-                        if (state.NextDependencies.Any(t => targets[t].Any(s => !s.Equals(state) && StartedResolving.Contains(s) && s.State == DependState.Resolving))) continue;
+                        // If we want to take a dependency on a resolving state:
+                        // It is allowed only in the case that the other state(s) ALSO wants to take a dependency on us
+                        // This is to avoid deadlock, and results in the freezing of the other state
+                        var resolvingStatesToTake = state.NextDependencies
+                                                         .SelectMany(t => targets[t].Where(s => !s.Equals(state)))
+                                                         .Where(s => StartedResolving.Contains(s))
+                                                         .Where(s => s.State == DependState.Resolving)
+                                                         .ToList();
+
+                        var resolvingStatesWantUs = resolvingStatesToTake.SelectMany(x => x.NextDependencies)
+                                                                         .Where(state.Targets.Contains);
+
+                        if (resolvingStatesToTake.Any() && !resolvingStatesWantUs.Any()) continue;
 
                         // We cannot allow unbound dependencies
                         if (state.UnboundDependency)
